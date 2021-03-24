@@ -25,13 +25,14 @@ SECRET_KEY = '_-5h8k*@cq1drcjfg2^l*=bt2o8zsfv5jhr6o_4jvos&48&(ar'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'localhost:4200', 'gforcevehicle.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'localhost:4200', 'gforcevehicle.herokuapp.com', 'http://localhost:8080']
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost',
     'http://localhost:8000',
     'http://localhost:4200',
+    'http://localhost:8080',
 )
 
 # Application definition
