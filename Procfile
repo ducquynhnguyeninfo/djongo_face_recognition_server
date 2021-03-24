@@ -1,0 +1,1 @@
+web: gunicorn vehicle_order_manager.wsgi
