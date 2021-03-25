@@ -32,6 +32,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost',
     'http://localhost:8000',
     'http://localhost:4200',
+    'https://gforcevehicle-ui.herokuapp.com',
     'http://localhost:8080',
 )
 
