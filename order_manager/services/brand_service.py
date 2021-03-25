@@ -2,7 +2,10 @@ from django.http.response import Http404
 from django import http
 
 from order_manager.shared import Singleton, DataRepository
-from order_manager.models.brand import Brand, BrandSerializer
+
+from order_manager.models.brand import Brand
+from order_manager.modelserializer.brand import BrandSerializer
+
 from order_manager.repositories import BrandRepository
 from order_manager.services.base_service import BaseService
 

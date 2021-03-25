@@ -1,7 +1,8 @@
+from django import http
 from order_manager.shared import Singleton, DataRepository
 from django.http.response import Http404
-from django import http
-from order_manager.models.order import Order, OrderSerializer
+from order_manager.models.order import Order
+from order_manager.modelserializer.order import OrderSerializer
 
 
 class OrderService():

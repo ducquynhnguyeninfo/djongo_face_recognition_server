@@ -1,5 +1,6 @@
 from order_manager.shared import Singleton, DataRepository
-from order_manager.models.brand import Brand, BrandSerializer
+from order_manager.models.brand import Brand
+from order_manager.modelserializer.brand import BrandSerializer
 
 class BrandRepository(DataRepository):
 

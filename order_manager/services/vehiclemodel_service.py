@@ -1,11 +1,13 @@
+from django import http
 from order_manager.shared import Singleton, DataRepository
 from django.http.response import Http404
-from django import http
-from order_manager.models.vehicle_model import VehicleModel, VehicleModelSerializer
+from order_manager.models.vehicle_model import VehicleModel
+from order_manager.modelserializer.vehicle_model import VehicleModelSerializer
 from rest_framework.request import Request
 from django.http import HttpRequest
 import uuid
-from order_manager.models.brand import BrandSerializer, Brand
+from order_manager.models.brand import Brand
+from order_manager.modelserializer.brand import BrandSerializer
 
 class VehicleModelService():
 
@@ -46,20 +48,19 @@ class VehicleModelService():
 
     def create(self, data: any):
         try:
-            # name = models.CharField(max_length=200, blank=True)
-            # picture = models.CharField(max_length=256, blank=True)
-            # price = models.FloatField(default=0)
+            # brand_data = data.pop('brand')
+            rebuiltdata = data
 
-            vm = VehicleModel()
-            vm.id=uuid.uuid4()
-            vm.picture = "emty"
-            serializer = VehicleModelSerializer(data=data)
-            serializer.id = vm.id
-            serializer.name = data.get('name')
-            serializer.picture = data.get('picture')
-            serializer.price = data.get('price')
-            # b = Brand(id=uuid.uuid4())
-            serializer.brand = BrandSerializer(data=data.get('brand'))
+            # rebuiltdata['brand'] = brand_data
+            # brandserialized = self.repository.get_by_pk(pk=brand_id)
+            serializer = VehicleModelSerializer(data=rebuiltdata)
+            # serializer.brand = brandserialized
+            # serializer.id = vm.id
+            # serializer.name = data.get('name')
+            # serializer.description = data.get('description')
+            # serializer.price = data.get('price')
+            # # b = Brand(id=uuid.uuid4())
+            # serializer.brand = BrandSerializer(data=data.get('brand'))
             if serializer.is_valid():
                 return self.repository.create(serializer=serializer)
             raise Exception(serializer.errors)
@@ -70,6 +71,9 @@ class VehicleModelService():
         try:
             old = self.repository.get_by_pk(pk)
             serializer = VehicleModelSerializer(old, data=newdata)
+            newbrand = newdata.get('brand', {})
+            serializer.brand = newbrand
+            # serializer.brand_id = newbrand.id
             if serializer.is_valid(raise_exception=True):
                 return self.repository.update(newdata=serializer)
             # raise Exception('data is not valid')

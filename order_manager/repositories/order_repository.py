@@ -1,5 +1,6 @@
 from order_manager.shared import Singleton, DataRepository
-from order_manager.models.order import Order, OrderSerializer
+from order_manager.models.order import Order
+from order_manager.modelserializer.order import OrderSerializer
 
 class OrderRepository(DataRepository):
 

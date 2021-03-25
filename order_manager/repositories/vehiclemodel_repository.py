@@ -1,5 +1,6 @@
 from order_manager.shared import Singleton, DataRepository
-from order_manager.models.vehicle_model import VehicleModel, VehicleModelSerializer
+from order_manager.models.vehicle_model import VehicleModel
+from order_manager.modelserializer.vehicle_model import VehicleModelSerializer
 
 class VehicleModelRepository(DataRepository):
 

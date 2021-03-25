@@ -17,9 +17,3 @@ class Pack(models.Model):
 
     def __str__(self):
         return self.model.vehiclemodel.brand
-
-
-class PackSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = Pack
-        fields = ('id', 'order', 'model', 'price', 'quantity')
